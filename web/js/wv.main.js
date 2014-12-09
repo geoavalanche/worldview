@@ -165,7 +165,7 @@ $(function() {
         ui.link = wv.link.ui(models, config);
         ui.tour = wv.tour(models, ui, config);
         ui.info = wv.ui.info(ui, config);
-
+        ui.granule = wv.granule(models, config, ui);
 
         $(window).resize(function() {
           if ($(window).width() < 720) {

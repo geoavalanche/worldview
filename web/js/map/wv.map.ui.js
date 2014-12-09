@@ -550,12 +550,14 @@ wv.map.ui = wv.map.ui || function(models, config) {
             text: false
         });
 
-        $zoomIn.click(function() {
+        $zoomIn.click(function(event) {
             map.zoomIn();
+            event.stopPropagation();
         });
 
         $zoomOut.click(function() {
             map.zoomOut();
+            event.stopPropagation();
         });
 
         map.addLayer(createLayerBlank(proj));
