@@ -35,11 +35,11 @@ wv.layers.sidebar = wv.layers.sidebar || function(models, config) {
         "<i class='productsIcon selected icon-add' title='Add Layers'></i>";
 
     var HTML_TAB_DOWNLOAD_SELECTED =
-        "<i class='productsIcon selected icon-download'></i>" +
-        "Download Data";
+        "<i class='productsIcon selected icon-granules'></i>" +
+        "Granules";
 
     var HTML_TAB_DOWNLOAD_UNSELECTED =
-        "<i class='productsIcon selected icon-download' title='Download Data'></i>";
+        "<i class='productsIcon selected icon-granules' title='Granules'></i>";
 
     var collapsed = false;
     var portrait = false;

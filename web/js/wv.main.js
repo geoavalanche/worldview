@@ -158,9 +158,9 @@ $(function() {
         ui.rubberband = wv.image.rubberband(models, ui, config);
         ui.image = wv.image.panel(models, ui, config);
         if ( config.features.dataDownload ) {
-            ui.data = wv.data.ui(models, ui, config);
+            //ui.data = wv.data.ui(models, ui, config);
             // FIXME: Why is this here?
-            ui.data.render();
+            //ui.data.render();
         }
         ui.link = wv.link.ui(models, config);
         ui.tour = wv.tour(models, ui, config);
@@ -178,6 +178,7 @@ $(function() {
         $("#eventsHolder").hide();
 
         // Wirings
+        /*
         if ( config.features.dataDownload ) {
             models.data.events
                 .on("activate", function() {
@@ -196,6 +197,7 @@ $(function() {
                 // FIXME: This is a hack
                 models.map.events.on("projection", models.data.updateProjection);
         }
+        */
 
         // Sink all focus on inputs if click unhandled
         $(document).click(function(event) {

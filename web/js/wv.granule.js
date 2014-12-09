@@ -17,7 +17,7 @@
 var wv = wv || {};
 wv.granule = wv.granule || function(models, config, ui) {
 
-    var endPoint = ""
+    var selector = "#wv-data";
     var maxDistance = 180;
     var dataFile = "data/Terra.EPSG4326.2014_11_16.json";
     var footprintStyle = {
@@ -28,54 +28,63 @@ wv.granule = wv.granule || function(models, config, ui) {
     };
 
     var self = {};
-    var enabled = false;
+
+    var pinning = false;
+    var panning = false;
     var map = null;
-    var footprints = null;
+    var layers = {
+        granule: null,
+        footprints: null,
+        pin: null
+    };
     var matches = [];
     var selected = null;
-    var image = null;
 
     self.granules = [];
 
-    self.enable = function() {
+    var enablePin = function() {
+        if ( pinning ) {
+            return;
+        }
         map = ui.map.selected;
         $(map.div).click(onMapClick);
-
-        footprints = new OpenLayers.Layer.Vector("Granule_Footprints", {
+        layers.footprints = new OpenLayers.Layer.Vector("Granule_Footprints", {
             styleMap: new OpenLayers.StyleMap(footprintStyle)
         });
-        map.addLayer(footprints);
-
-        self.enabled = true;
+        map.addLayer(layers.footprints);
+        pinning = true;
     };
 
-    self.disable = function() {
-        map = null;
+    var disablePin = function() {
+        if ( !pinning ) {
+            return;
+        }
         $(map.div).off("click", onMapClick);
-        map.removeLayer(footprints);
-        self.enabled = false;
+        map.removeLayer(layers.footprints);
+        map = null;
+        pinning = false;
     };
 
     var updateFootprints = function() {
-        footprints.removeAllFeatures();
+        layers.footprints.removeAllFeatures();
         var features = [];
         _.each(matches, function(granule) {
             var feature = new OpenLayers.Feature.Vector(granule);
             features.push(feature);
         });
-        footprints.addFeatures(features);
+        layers.footprints.addFeatures(features);
     };
 
     var updateSelection = function() {
-        if ( image ) {
-            map.removeLayer(image);
-            image = null;
+        if ( layers.granule ) {
+            map.removeLayer(layers.granule);
+            layers.granule = null;
         }
         if ( !selected ) {
             return;
         }
         var url = createURL(selected);
-        image = new OpenLayers.Layer.XYZ("Granule_Image", url, {
+        layers.granule = new OpenLayers.Layer.XYZ("Granule_Image", url, {
             "maxResolution": 0.5625,
             "serverResolutions": [
                 0.5625,
@@ -89,7 +98,7 @@ wv.granule = wv.granule || function(models, config, ui) {
             "tileSize": new OpenLayers.Size(512, 512)
         });
         console.log(url);
-        map.addLayer(image);
+        map.addLayer(layers.granule);
     };
 
     var createURL = function(granule) {
@@ -106,7 +115,7 @@ wv.granule = wv.granule || function(models, config, ui) {
             "TILEROW=${y}",
             "TILECOL=${x}",
             "FORMAT=image%2Fpng"
-        ]
+        ];
         return endpoint + params.join("&");
     };
 
@@ -145,6 +154,29 @@ wv.granule = wv.granule || function(models, config, ui) {
                 self.granules.push(poly);
             }
         });
+
+        $(selector).addClass("bank");
+        var $button = $("<input></input>")
+            .attr("id", "wv-granule-toggle")
+            .attr("type", "checkbox");
+        var $label = $("<label></label>")
+            .attr("for", "wv-granule-toggle")
+            .html("<i class='fa fa-crosshairs'></i> Set Location");
+        $(selector).append($button);
+        $(selector).append($label);
+        $button.button();
+
+        $button.change(togglePin);
+    };
+
+    var togglePin = function() {
+        $(this).blur();
+        console.log("checked", $(this).prop("checked"));
+        if ( $(this).prop("checked") ) {
+            enablePin();
+        } else {
+            disablePin();
+        }
     };
 
     var init = function() {
