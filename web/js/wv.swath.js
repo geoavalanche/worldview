@@ -52,6 +52,40 @@ wv.swath = wv.swath || function(models, config, ui) {
                     "2014-12-08T11:05:00Z"
                 ]
             }]
+        },
+        geographic: {
+            layer: "MODIS_Terra_Chlorophyll_A_Granule_v5_NRT",
+            endpoint: "https://sit.gibs.earthdata.nasa.gov/wmts-epsg4326/wmts.cgi?",
+            matrixSetName: "1km",
+            source: "GIBS:geographic",
+            matrixSet: "EPSG4326_1km",
+            swaths: [{
+                label: "12:00 - 12:40 UTC",
+                granules: [
+                    "2014-11-16T12:00:00Z",
+                    "2014-11-16T12:05:00Z",
+                    "2014-11-16T12:10:00Z",
+                    "2014-11-16T12:15:00Z",
+                    "2014-11-16T12:20:00Z",
+                    "2014-11-16T12:25:00Z",
+                    "2014-11-16T12:30:00Z",
+                    "2014-11-16T12:35:00Z",
+                    "2014-11-16T12:40:00Z"
+                ]
+            },{
+                label: "13:40 - 14:20 UTC",
+                granules: [
+                    "2014-11-16T13:40:00Z",
+                    "2014-11-16T13:45:00Z",
+                    "2014-11-16T13:50:00Z",
+                    "2014-11-16T13:55:00Z",
+                    "2014-11-16T14:00:00Z",
+                    "2014-11-16T14:05:00Z",
+                    "2014-11-16T14:10:00Z",
+                    "2014-11-16T14:15:00Z",
+                    "2014-11-16T14:20:00Z"
+                ]
+            }]
         }
     };
 
