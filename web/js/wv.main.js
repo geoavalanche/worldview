@@ -57,11 +57,13 @@ $(function() {
         wv.debug.config(config);
 
         // Load any additional scripts as needed
+        /*
         if ( config.scripts ) {
             _.each(config.scripts, function(script) {
                 $.getScript(script);
             });
         }
+        */
 
         wv.layers.validate(errors, config);
 
@@ -165,7 +167,7 @@ $(function() {
         ui.link = wv.link.ui(models, config);
         ui.tour = wv.tour(models, ui, config);
         ui.info = wv.ui.info(ui, config);
-        ui.granule = wv.granule(models, config, ui);
+        ui.swath = wv.swath(models, config, ui);
 
         $(window).resize(function() {
           if ($(window).width() < 720) {

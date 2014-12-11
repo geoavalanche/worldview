@@ -99,14 +99,14 @@ ul#productsHoldertabs .tab:hover i.icon-add    { background-position:-90px 20px;
 ul#productsHoldertabs li.ui-state-active .tab:hover i.icon-add {background-position:-90px -10px;}
 .icon-add-alt     { background-position:-120px -10px; }
 
-.icon-granules {
-    background: url(../images/crosshairs.png) transparent 0;
+.icon-swaths {
+    background: url(../images/swaths.png) transparent 0;
 }
-ul#productsHoldertabs .tab:hover i.icon-granules {
-    background: url(../images/crosshairs-highlight.png) transparent 0;
+ul#productsHoldertabs .tab:hover i.icon-swaths {
+    background: url(../images/swaths-highlight.png) transparent 0;
 }
-ul#productsHoldertabs li.ui-state-active .tab:hover i.icon-granules {
-    background: url(../images/crosshairs.png) transparent 0;
+ul#productsHoldertabs li.ui-state-active .tab:hover i.icon-swaths {
+    background: url(../images/swaths.png) transparent 0;
 }
 
 /***********************************End Icons***********************************/

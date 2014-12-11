@@ -1,0 +1,35 @@
+#wv-data .ui-button {
+}
+
+/*
+#wv-data label {
+    padding: .4em 1em;
+    margin-top: 10px;
+    background: #000;
+}
+*/
+
+#wv-data label.ui-state-active {
+    background: #fff;
+}
+
+#swath-list {
+    margin-top: 10px;
+}
+
+.wv-swath-list-item {
+    background: rgb(204, 204, 204);
+    padding: 10px;
+    margin: 1px 2% 0;
+    font: 100 13px/13px "Lucida Sans", "Arial", Sans-Serif;
+}
+
+.wv-swath-list-item:hover {
+    background: rgb(250, 250, 250);
+}
+
+.wv-swath-list-item .iCheck {
+    position: relative;
+    float: right;
+    margin-top: -18px;
+}

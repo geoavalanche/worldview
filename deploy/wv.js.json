@@ -57,6 +57,7 @@
         "web/js/link/wv.link.model.js",
         "web/js/link/wv.link.ui.js",
 
+        "web/js/wv.swath.js",
         "web/js/wv.feedback.js",
         "web/js/wv.tour.js",
         "web/js/wv.debug.js",

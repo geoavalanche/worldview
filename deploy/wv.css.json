@@ -20,5 +20,6 @@
     "web/css/wv.sidebar.css",
     "web/css/wv.layers.options.css",
     "web/css/new-ui.css",
-    "web/css/wv.mobile.css"
+    "web/css/wv.mobile.css",
+    "web/css/wv.swath.css"
 ]
