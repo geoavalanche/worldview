@@ -183,6 +183,7 @@ wv.swath = wv.swath || function(models, config, ui) {
     };
 
     var onProjectionChange = function() {
+        clear();
         proj = models.proj.selected.id;
         map = ui.map.selected;
         if ( defs[proj] ) {
