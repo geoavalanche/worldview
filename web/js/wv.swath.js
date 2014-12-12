@@ -114,6 +114,7 @@ wv.swath = wv.swath || function(models, config, ui) {
     };
 
     var deactivate = function() {
+        clear();
         models.proj.events.off("select", onProjectionChange);
     };
 
