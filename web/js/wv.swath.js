@@ -29,6 +29,27 @@ wv.swath = wv.swath || function(models, config, ui) {
     var $items;
 
     var defs = {
+        arctic: {
+            layer: "MODIS_Aqua_CorrectedReflectance_TrueColor_Granule_v6",
+            endpoint: "http://cache2-sit.gibs.earthdata.nasa.gov/wmts-epsg3413/wmts.cgi?",
+            matrixSetName: "250m",
+            source: "GIBS:arctic",
+            matrixSet: "EPSG3413_250m",
+            swaths: [{
+                label: "21:35 - 21:40 UTC",
+                granules: [
+                    "2014-10-28T21:35:00Z",
+                    "2014-10-28T21:40:00Z"
+                ]
+            },{
+                label: "23:10 - 23:20 UTC",
+                granules: [
+                    "2014-10-28T23:10:00Z",
+                    "2014-10-28T23:15:00Z",
+                    "2014-10-28T23:20:00Z"
+                ]
+            }]
+        },
         antarctic: {
             layer: "MODIS_Aqua_CorrectedReflectance_TrueColor_Granule_v6",
             endpoint: "http://cache2-sit.gibs.earthdata.nasa.gov/wmts-epsg3031/wmts.cgi?",
